@@ -91,7 +91,7 @@ public class RestEndpointProxyTest extends BaseRestEndointTest {
 	@Test
 	public void testPostVoid() throws IOException, InterruptedException {
 		server.enqueue(prepareResponse(""));
-		Maybe<Void> to = restInterface.postVoid(String.format(SERIALIZED_STRING_PATTERN, 100, "test string"));
+		Maybe<Void> to = restInterface.postVoid(String.format(SERIALIZED_STRING_PATTERN, 100, "test string")).cache();
 		to.subscribe();
 		Assert.assertNotNull("Recieved Object is null", to);
 
